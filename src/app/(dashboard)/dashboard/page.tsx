@@ -26,13 +26,21 @@ import FilterPanel from '@/app/DashboardComponents/FilterPanel';
 import DashboardSummary from '@/app/DashboardComponents/DashboardSummary';
 import ExpenseBarChart from '@/app/DashboardComponents/ExpenseBarchart';
 import CategoryPieChart from '@/app/DashboardComponents/CategoryPieChart';
+import { useRouter } from 'next/navigation';
 
 export default function DashboardPage() {
-  const { user }:any = useAuth();
+  const { user }:any = useAuth();  
+  const router = useRouter();
   const [category, setCategory] = useState('');
   const [range, setRange] = useState('30');
   const [loading, setLoading] = useState(true);
   const [expenses, setExpenses] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (!user) {
+      router.push('/login');
+    }
+  }, [user]);
 
   const loadData = async () => {
     setLoading(true);
