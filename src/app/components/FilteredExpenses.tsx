@@ -99,7 +99,7 @@ export default function FilteredExpenses({ email, initialExpenses }: Props) {
   const [expenses, setExpenses] = useState(initialExpenses || []);
   const [hasLoaded, setHasLoaded] = useState(false);
   const [category, setCategory] = useState('');
-  const [dateRange, setDateRange] = useState<'today' | 'week' | 'month' | '3months'>('today');
+  const [dateRange, setDateRange] = useState<'today' | 'week' | 'month' | '3months'>('week');
   const [loading, setLoading] = useState(false);
   const [editing, setEditing] = useState<any | null>(null);
   const [showModal, setShowModal] = useState(false);
